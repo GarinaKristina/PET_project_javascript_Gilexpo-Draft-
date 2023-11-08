@@ -1,0 +1,24 @@
+name: Automation tests for Gilexpo
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: macos-13
+    name: Automation tests for Gilexpo
+
+    steps:
+      - name: Checkout PET_project_javascript_Gilexpo-Draft-
+        uses: actions/checkout@v4
+          ref:'main'
+
+      - name: Use Node.js v16.20.2
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16.20"
+
+      - run: |
+          npm install
+          npm run wdio
