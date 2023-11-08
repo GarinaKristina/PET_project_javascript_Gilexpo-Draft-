@@ -1,4 +1,4 @@
-const BasePage = require('./BasePage');
+const BasePage = require("./BasePage");
 
 class GilexpoPage extends BasePage {
   get guestBook() {
@@ -17,9 +17,7 @@ class GilexpoPage extends BasePage {
   get content() {
     return $('//*[@id="tinymce"]');
   }
-  async maximizeWindow() {
-    await browser.maximizeWindow();
-  }
+
   async switchToFrame(id) {
     await browser.switchToFrame(id);
   }
