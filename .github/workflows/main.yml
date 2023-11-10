@@ -37,3 +37,6 @@ jobs:
         with:
            name: allure-report
            path: build/allure-report
+
+      - name: Display Allure Results
+        run: ls -R build/allure-results
