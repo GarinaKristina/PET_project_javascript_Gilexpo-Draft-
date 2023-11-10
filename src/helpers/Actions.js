@@ -33,7 +33,6 @@ class Actions {
   async getValueElement(selector) {
     const element = await this.getElement(selector);
     const value = await element.getValue();
-    // console.log(value);
     return value;
   }
 }
