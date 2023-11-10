@@ -1,14 +1,25 @@
 export const config = {
-  specs: ["./test/specs/**/*.js"],
+  runner: "local",
 
+  specs: ["./test/specs/**/*.js"],
+  // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
   ],
-  logLevel: "warn",
+
+  maxInstances: 10,
+
+  capabilities: [
+    {
+      browserName: "chrome",
+    },
+  ],
+
+  logLevel: "info",
 
   bail: 0,
 
-  baseUrl: "http://www.gilexpo.by/",
+  baseUrl: "http://localhost",
 
   waitforTimeout: 10000,
 
@@ -16,7 +27,7 @@ export const config = {
 
   connectionRetryCount: 3,
 
-  services: ["chromedriver"],
+  services: ["gmail"],
 
   framework: "mocha",
 
@@ -25,9 +36,5 @@ export const config = {
   mochaOpts: {
     ui: "bdd",
     timeout: 60000,
-  },
-  async before() {
-    await Actions.openUrl(this.baseUrl);
-    await browser.maximizeWindow();
   },
 };
