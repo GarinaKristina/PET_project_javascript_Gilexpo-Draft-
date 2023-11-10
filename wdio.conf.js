@@ -1,5 +1,7 @@
 import Actions from "./src/helpers/Actions.js";
 import allure from "allure-commandline";
+import { rmSync } from "node:fs";
+import path from "node:path";
 
 export const config = {
   runner: "local",
@@ -63,6 +65,7 @@ export const config = {
       force: true,
     });
   },
+
   async before() {
     await Actions.openUrl(this.baseUrl);
     await browser.maximizeWindow();
