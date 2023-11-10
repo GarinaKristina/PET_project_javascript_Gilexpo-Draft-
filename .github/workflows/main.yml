@@ -10,7 +10,7 @@ jobs:
     name: Automation tests for Gilexpo
 
     steps:
-      - name: Checkout PET_project_javascript_Gilexpo-Draft-
+      - name: Checkout Pet project
         uses: actions/checkout@v4
 
       - name: Install packages
