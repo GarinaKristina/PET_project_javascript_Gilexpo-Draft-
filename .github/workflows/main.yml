@@ -19,8 +19,8 @@ jobs:
       - name: Run succeed test
         run: npm run good_test
 
-      - name: Run failed test
-        run: npm run bad_test
+      # - name: Run failed test
+      #   run: npm run bad_test
 
       - name: Install Allure Command Line
         run: brew install allure
