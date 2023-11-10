@@ -6,7 +6,7 @@
     "@wdio/local-runner": "^8.22.1",
     "@wdio/mocha-framework": "^8.22.0",
     "@wdio/spec-reporter": "^8.21.0",
-    "chromedriver": "^119.0.0",
+    "chromedriver": "^118.0.1",
     "wdio-chromedriver-service": "^8.1.1",
     "wdio-gmail-service": "^1.0.4"
   },
