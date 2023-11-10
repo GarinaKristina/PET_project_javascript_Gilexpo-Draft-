@@ -7,7 +7,7 @@ describe("Sent letter to support from guestbook", async () => {
     await Actions.clickOnElement(Page.HomePage.guestBook);
     await Actions.setValue(Page.HomePage.topic, Customer.topic);
     // await Actions.switchToFrame(0);
-    // await Actions.setValue(Page.HomePage.content, Customer.text);
-    // await Actions.saveScreenshot();
+    await Actions.setValue(Page.HomePage.content, Customer.text);
+    await Actions.saveScreenshot();
   });
 });
