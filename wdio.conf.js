@@ -1,25 +1,27 @@
+import Actions from "./src/helpers/Actions.js";
 export const config = {
   runner: "local",
 
-  specs: ["./test/specs/**/*.js"],
-  // Patterns to exclude.
-  exclude: [
-    // 'path/to/excluded/files'
-  ],
+  specs: ["./src/specs/sentMessageGuestBook.test.js"],
 
   maxInstances: 10,
 
   capabilities: [
     {
+      maxInstances: 5,
       browserName: "chrome",
+      "goog:chromeOptions": {
+        args: ["--no-sandbox"],
+      },
+      acceptInsecureCerts: true,
     },
   ],
 
-  logLevel: "info",
+  logLevel: "warn",
 
   bail: 0,
 
-  baseUrl: "http://localhost",
+  baseUrl: "http://www.gilexpo.by/",
 
   waitforTimeout: 10000,
 
@@ -27,7 +29,7 @@ export const config = {
 
   connectionRetryCount: 3,
 
-  services: ["gmail"],
+  services: ["chromedriver"],
 
   framework: "mocha",
 
@@ -36,5 +38,10 @@ export const config = {
   mochaOpts: {
     ui: "bdd",
     timeout: 60000,
+  },
+
+  async before() {
+    await Actions.openUrl(this.baseUrl);
+    await browser.maximizeWindow();
   },
 };
