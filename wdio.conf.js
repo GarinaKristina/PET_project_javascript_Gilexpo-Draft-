@@ -4,6 +4,10 @@ export const config = {
 
   specs: ["./src/specs/**.test.js"],
 
+  suites: {
+    good: [`./src/specs/sentMessageGuestBook.test.js`],
+    bad: [`./src/specs/failedSentMessageGuestBook.test.js`],
+  },
   maxInstances: 10,
 
   capabilities: [

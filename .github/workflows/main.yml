@@ -10,14 +10,11 @@ jobs:
     name: Automation tests for Gilexpo
 
     steps:
-      # - name: Use Node.js v18.18.2
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: "18.18.2"
-
       - name: Checkout PET_project_javascript_Gilexpo-Draft-
         uses: actions/checkout@v4
 
-      - run: |
-          npm install
-          npm run wdio
+      - name: Install packages
+        run: npm install
+
+      - name: Run succeed test
+        run: npm run wdio

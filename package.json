@@ -11,6 +11,7 @@
     "wdio-gmail-service": "^1.0.4"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.js"
+    "good_test": "wdio run ./wdio.conf.js --suite good",
+    "bad_test": "wdio run ./wdio.conf.js --suite bad"
   }
 }
