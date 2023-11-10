@@ -20,7 +20,10 @@ class Actions {
 
   async setValue(selector, value) {
     const element = await this.getElement(selector);
-    await element.setValue(value);
+    const isDisplayed = await element.isDisplayed();
+    if (isDisplayed) {
+      await element.setValue(value);
+    }
   }
 
   async saveScreenshot() {
@@ -32,8 +35,11 @@ class Actions {
   }
   async getValueElement(selector) {
     const element = await this.getElement(selector);
-    const value = await element.getValue();
-    return value;
+    const isDisplayed = await element.isDisplayed();
+    if (isDisplayed) {
+      const value = await element.getValue();
+      return value;
+    }
   }
 }
 export default new Actions();
