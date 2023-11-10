@@ -2,7 +2,7 @@ import Actions from "./src/helpers/Actions.js";
 export const config = {
   runner: "local",
 
-  specs: ["./src/specs/sentMessageGuestBook.test.js"],
+  specs: ["./src/specs/**.test.js"],
 
   maxInstances: 10,
 
