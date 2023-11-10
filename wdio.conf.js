@@ -1,5 +1,5 @@
 import Actions from "./src/helpers/Actions.js";
-import allure from "allure-commandline";
+// import allure from "allure-commandline";
 import { rmSync } from "node:fs";
 import path from "node:path";
 
@@ -70,22 +70,22 @@ export const config = {
     await Actions.openUrl(this.baseUrl);
     await browser.maximizeWindow();
   },
-  async onComplete() {
-    const reportError = new Error("Could not generate Allure report");
-    const generation = allure(["generate", "allure-results", "--clean"]);
-    return new Promise((resolve, reject) => {
-      const generationTimeout = setTimeout(() => reject(reportError), 5000);
+  // async onComplete() {
+  //   const reportError = new Error("Could not generate Allure report");
+  //   const generation = allure(["generate", "allure-results", "--clean"]);
+  //   return new Promise((resolve, reject) => {
+  //     const generationTimeout = setTimeout(() => reject(reportError), 5000);
 
-      generation.on("exit", function (exitCode) {
-        clearTimeout(generationTimeout);
+  //     generation.on("exit", function (exitCode) {
+  //       clearTimeout(generationTimeout);
 
-        if (exitCode !== 0) {
-          return reject(reportError);
-        }
+  //       if (exitCode !== 0) {
+  //         return reject(reportError);
+  //       }
 
-        console.log("Allure report successfully generated");
-        resolve();
-      });
-    });
-  },
+  //       console.log("Allure report successfully generated");
+  //       resolve();
+  //     });
+  //   });
+  // },
 };
