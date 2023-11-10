@@ -1,4 +1,6 @@
 class Actions {
+  screenshotName = "./gilexpo.png";
+
   async openUrl(url) {
     await browser.url(url);
   }
@@ -14,6 +16,25 @@ class Actions {
     if (isDisplayed) {
       await element.click();
     }
+  }
+
+  async setValue(selector, value) {
+    const element = await this.getElement(selector);
+    await element.setValue(value);
+  }
+
+  async saveScreenshot() {
+    await browser.saveScreenshot(this.screenshotName);
+  }
+
+  async switchToFrame(id) {
+    await browser.switchToFrame(id);
+  }
+  async getValueElement(selector) {
+    const element = await this.getElement(selector);
+    const value = await element.getValue();
+    // console.log(value);
+    return value;
   }
 }
 export default new Actions();
