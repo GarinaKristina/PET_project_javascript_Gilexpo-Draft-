@@ -1,4 +1,7 @@
-module.exports = class Actions {
+export default class Actions {
+  async openUrl(url) {
+    await browser.url(url);
+  }
   async getElement(selector) {
     const element = await $(selector);
     return element;
@@ -11,4 +14,4 @@ module.exports = class Actions {
       await element.click();
     }
   }
-};
+}

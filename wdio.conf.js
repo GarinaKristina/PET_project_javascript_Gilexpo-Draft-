@@ -1,4 +1,4 @@
-exports.config = {
+export const config = {
   specs: ["./test/specs/**/*.js"],
 
   exclude: [
@@ -8,7 +8,7 @@ exports.config = {
 
   bail: 0,
 
-  baseUrl: "http://localhost",
+  baseUrl: "http://www.gilexpo.by/",
 
   waitforTimeout: 10000,
 
@@ -27,6 +27,7 @@ exports.config = {
     timeout: 60000,
   },
   async before() {
+    await Actions.openUrl(this.baseUrl);
     await browser.maximizeWindow();
   },
 };
