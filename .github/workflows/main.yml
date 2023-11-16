@@ -28,12 +28,11 @@ jobs:
 
       - name: Generate Allure Report
         if: always()
-        run: |
-              allure generate build/allure-results --clean -o build/allure-report
+        run: allure generate allure-result/ --clean && allure open
 
       - name: Upload Allure Report
         if: always()
         uses: actions/upload-pages-artifact@v2.0.0
         with:
-           name: allure-report
-           path: build/allure-report
+          name: allure-report
+          path: build/allure-report
