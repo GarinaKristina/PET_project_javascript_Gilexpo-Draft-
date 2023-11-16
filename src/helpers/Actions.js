@@ -35,11 +35,8 @@ class Actions {
   }
   async getValueElement(selector) {
     const element = await this.getElement(selector);
-    const isDisplayed = await element.isDisplayed();
-    if (isDisplayed) {
-      const value = await element.getValue();
-      return value;
-    }
+    const value = await element.getValue();
+    return value;
   }
 }
 export default new Actions();

@@ -11,6 +11,8 @@ describe("Sent letter to support from guestbook", async () => {
     await Actions.saveScreenshot();
   });
   it("Should have text in content area", async () => {
+    await browser.pause(800000);
+
     const value = await Actions.getValueElement(
       Page.HomePage.guestbookDescription
     );
