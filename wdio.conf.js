@@ -71,12 +71,7 @@ export const config = {
     await browser.maximizeWindow();
   },
 
-  afterStep: async function (
-    step,
-    scenario,
-    { error, duration, passed },
-    context
-  ) {
+  async afterStep(step, scenario, { error, duration, passed }, context) {
     if (error) {
       await browser.takeScreenshot();
     }
