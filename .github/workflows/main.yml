@@ -1,13 +1,13 @@
-name: Automation tests
+name: Automation tests for Gilexpo
 
 on:
   pull_request:
     branches: ["main"]
 
 jobs:
-  allure:
-    name: Generate Allure Report
-    runs-on: ubuntu-latest
+  build:
+    runs-on: macos-13
+    name: Automation tests for Gilexpo
 
     steps:
       - name: Checkout Pet project
@@ -18,6 +18,17 @@ jobs:
 
       - name: Run succeed test
         run: npm run good_test
+
+      - name: Run failed test
+        run: npm run bad_test
+
+  allure:
+    name: Generate Allure Report
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Pet project
+        uses: actions/checkout@v4
 
       - name: Get Allure history
         uses: actions/checkout@v2
