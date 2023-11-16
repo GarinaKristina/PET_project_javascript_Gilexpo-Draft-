@@ -28,7 +28,7 @@ jobs:
 
       - name: Generate Allure Report
         if: always()
-        run: allure generate allure-result/ --clean && allure open
+        run: allure generate allure-result/ --clean
 
       - name: Upload Allure Report
         if: always()
