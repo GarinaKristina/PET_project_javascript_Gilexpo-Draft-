@@ -8,7 +8,7 @@ pipeline {
         stage('Clean') {
             steps {
                 cleanWs()
-                echo "I am cleaning your amazing '$CURRENT_BRANCH' branch...oh oh oh....."
+                echo "I am cleaning your amazing branch...oh oh oh....."
             }
         }   
         
