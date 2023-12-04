@@ -1,10 +1,8 @@
+x = BRANCH
 pipeline {
     agent any
     
-    environment {
-           CURRENT_BRANCH= process.env.BRANCH_NAME
-        } 
-    
+      
     stages {
         
         stage('Clean') {
@@ -14,12 +12,12 @@ pipeline {
             }
         }   
         
-    //     stage('Clone repo') {
+        stage('Clone repo') {
             
-    //         steps {
-    //             git branch:"$CURRENT_BRANCH", url: 'https://github.com/GarinaKristina/PET_project_javascript_Gilexpo-Draft-.git'
-    //         }
-    //     }
+            steps {
+                git branch:BRANCH, url: 'https://github.com/GarinaKristina/PET_project_javascript_Gilexpo-Draft-.git'
+            }
+        }
         
     
     //     stage('Packages install') {
