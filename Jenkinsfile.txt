@@ -1,4 +1,4 @@
-BRANCH = sh 'git branch -a'
+BRANCH = env.BRANCH_NAME
 pipeline {
     agent any
     
