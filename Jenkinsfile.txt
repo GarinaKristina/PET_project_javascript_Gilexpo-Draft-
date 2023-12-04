@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-           CURRENT_BRANCH= sh 'git rev-parse --abbrev-ref HEAD'
+           CURRENT_BRANCH= process.env.BRANCH_NAME
         } 
     
     stages {
