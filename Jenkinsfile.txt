@@ -1,16 +1,16 @@
 pipeline {
     agent any
     
-    // environment {
-    //        CURRENT_BRANCH=''
-    //     } 
+    environment {
+           CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+        } 
     
     stages {
         
         stage('Clean') {
             steps {
                 cleanWs()
-                echo "I am cleaning your amazing '$env.BRANCH_NAME' branch...oh oh oh....."
+                echo "I am cleaning your amazing '$CURRENT_BRANCH' branch...oh oh oh....."
             }
         }   
         
