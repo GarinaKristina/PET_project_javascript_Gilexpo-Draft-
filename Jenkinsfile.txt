@@ -1,4 +1,4 @@
-x = BRANCH
+BRANCH = sh 'git branch -a'
 pipeline {
     agent any
     
