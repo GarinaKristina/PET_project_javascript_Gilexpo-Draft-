@@ -22,24 +22,9 @@ jobs:
       - name: Run failed test
         run: npm run bad_test
 
-      - uses: actions/upload-artifact@v1
+      - name: Fuuuuu
+        uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: logs
           path: logs
-
-      # - name: Install Allure Command Line
-      #   if: always()
-      #   run: brew install allure
-
-      # - name: Generate Allure Report
-      #   if: always()
-      #   run: |
-      #     allure generate build/allure-results --clean -o build/allure-report
-
-      # - name: Upload Allure Report
-      #   if: always()
-      #   uses: actions/upload-pages-artifact@v2.0.0
-      #   with:
-      #     name: allure-report
-      #     path: build/allure-report
