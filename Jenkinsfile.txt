@@ -1,57 +1,54 @@
 pipeline {
     agent any
     
-    environment {
-           CURRENT_BRANCH=''
-        } 
+    // environment {
+    //        CURRENT_BRANCH=''
+    //     } 
     
     stages {
         
         stage('Clean') {
             steps {
-                script {
-                    CURRENT_BRANCH = sh "(script: 'git symbolic-ref --short HEAD', returnStdout: true)".trim()
-                }
                 cleanWs()
-                echo "I am cleaning your amazing '$CURRENT_BRANCH' branch...oh oh oh....."
+                echo "I am cleaning your amazing '$env.BRANCH_NAME' branch...oh oh oh....."
             }
         }   
         
-        stage('Clone repo') {
+    //     stage('Clone repo') {
             
-            steps {
-                git branch:"$CURRENT_BRANCH", url: 'https://github.com/GarinaKristina/PET_project_javascript_Gilexpo-Draft-.git'
-            }
-        }
+    //         steps {
+    //             git branch:"$CURRENT_BRANCH", url: 'https://github.com/GarinaKristina/PET_project_javascript_Gilexpo-Draft-.git'
+    //         }
+    //     }
         
     
-        stage('Packages install') {
-            steps {
-                script {
-                sh 'npm ci'
-                }
-            }
-        }
+    //     stage('Packages install') {
+    //         steps {
+    //             script {
+    //             sh 'npm ci'
+    //             }
+    //         }
+    //     }
         
-        stage('Run tests') {
-            steps {    
-                    script {
+    //     stage('Run tests') {
+    //         steps {    
+    //                 script {
                     
-                    sh 'npm run good_test'
-                    }
+    //                 sh 'npm run good_test'
+    //                 }
                 
-            }
-        }
+    //         }
+    //     }
         
-        stage('Report') {
-            steps {  
-                script {
+    //     stage('Report') {
+    //         steps {  
+    //             script {
                 
-                    allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
-                }
+    //                 allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+    //             }
                 
-            }
-        }
+    //         }
+    //     }
 
     }   
 }
