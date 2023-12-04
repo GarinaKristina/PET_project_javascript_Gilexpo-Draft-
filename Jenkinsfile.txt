@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-           BRANCH = 'gitAction'
+           BRANCH = env.GIT_BRANCH
         } 
     
     stages {
