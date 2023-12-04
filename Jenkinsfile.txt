@@ -1,4 +1,4 @@
-BRANCH = env.BRANCH_NAME
+BRANCH = BRANCH_NAME
 pipeline {
     agent any
     
