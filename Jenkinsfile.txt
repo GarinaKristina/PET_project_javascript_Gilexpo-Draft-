@@ -10,7 +10,7 @@ pipeline {
         stage('Clean') {
             steps {
                 script {
-                    CURRENT_BRANCH = sh(script: 'git symbolic-ref --short HEAD', returnStdout: true).trim()
+                    CURRENT_BRANCH = sh "(script: 'git symbolic-ref --short HEAD', returnStdout: true)".trim()
                 }
                 cleanWs()
                 echo "I am cleaning your amazing '$CURRENT_BRANCH' branch...oh oh oh....."
