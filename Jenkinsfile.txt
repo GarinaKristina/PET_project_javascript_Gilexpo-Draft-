@@ -1,25 +1,23 @@
 pipeline {
     agent any
     
-    // environment {
-    //        BRANCH = ${GIT_BRANCH}
-    //     } 
+    environment {
+           CURRENT_BRANCH=$(git symbolic-ref --short HEAD)
+        } 
     
     stages {
         
         stage('Clean') {
         steps {
-                echo "$GIT_BRANCH"
-
-                // cleanWs()
-                // echo "I am cleaning your amazing '$BRANCH' branch...oh oh oh....."
+                cleanWs()
+                echo "I am cleaning your amazing '$CURRENT_BRANCH' branch...oh oh oh....."
             }
         }   
         
         stage('Clone repo') {
             
             steps {
-                git branch:"$BRANCH", url: 'https://github.com/GarinaKristina/PET_project_javascript_Gilexpo-Draft-.git'
+                git branch:"$CURRENT_BRANCH", url: 'https://github.com/GarinaKristina/PET_project_javascript_Gilexpo-Draft-.git'
             }
         }
         
