@@ -1,13 +1,17 @@
 pipeline {
     agent any
     
-    environment {
-           BRANCH = ${GIT_BRANCH}
-        } 
+    // environment {
+    //        BRANCH = ${GIT_BRANCH}
+    //     } 
     
     stages {
         
         stage('Clean') {
+
+            steps {
+  sh 'echo $GIT_BRANCH'
+}
         steps {
                 cleanWs()
                 echo "I am cleaning your amazing '$BRANCH' branch...oh oh oh....."
