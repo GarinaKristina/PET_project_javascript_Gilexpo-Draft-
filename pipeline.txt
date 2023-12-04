@@ -1,0 +1,54 @@
+pipeline {
+    agent any
+    
+    environment {
+           BRANCH = 'gitAction'
+        } 
+    
+    stages {
+        
+        stage('Clean') {
+        steps {
+                cleanWs()
+                echo "I am cleaning your amazing '$BRANCH' branch...oh oh oh....."
+            }
+        }   
+        
+        stage('Clone repo') {
+            
+            steps {
+                git branch:"$BRANCH", url: 'https://github.com/GarinaKristina/PET_project_javascript_Gilexpo-Draft-.git'
+            }
+        }
+        
+    
+        stage('Packages install') {
+            steps {
+                script {
+                sh 'npm ci'
+                }
+            }
+        }
+        
+        stage('Run tests') {
+            steps {    
+                    script {
+                    
+                    sh 'npm run good_test'
+                    }
+                
+            }
+        }
+        
+        stage('Report') {
+            steps {  
+                script {
+                
+                    allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+                }
+                
+            }
+        }
+
+    }   
+}
