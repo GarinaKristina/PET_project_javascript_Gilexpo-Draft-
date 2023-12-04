@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-           CURRENT_BRANCH=$(git symbolic-ref --short HEAD)
+           CURRENT_BRANCH='$(git symbolic-ref --short HEAD)'
         } 
     
     stages {
