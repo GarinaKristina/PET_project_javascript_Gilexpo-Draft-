@@ -2,13 +2,19 @@ pipeline {
     agent any
     
     environment {
-           CURRENT_BRANCH='$(git symbolic-ref --short HEAD)'
+           CURRENT_BRANCH=''
         } 
     
     stages {
         
         stage('Clean') {
-        steps {
+             steps {
+                script {
+                    CURRENT_BRANCH = sh(script: 'git symbolic-ref --short HEAD', returnStdout: true).trim()
+                }
+            }
+             steps {
+            
                 cleanWs()
                 echo "I am cleaning your amazing '$CURRENT_BRANCH' branch...oh oh oh....."
             }
