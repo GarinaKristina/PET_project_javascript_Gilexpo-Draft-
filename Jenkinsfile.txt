@@ -1,4 +1,4 @@
-def BRANCH = 'gitAction'
+def BRANCH = param.Branch
 pipeline {
     agent any
     
