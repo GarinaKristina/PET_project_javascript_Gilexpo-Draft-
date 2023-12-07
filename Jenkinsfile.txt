@@ -1,4 +1,4 @@
-BRANCH =  GIT_BRANCH
+def BRANCH = sh "git rev-parse --abbrev-ref HEAD"
 pipeline {
     agent any
     
@@ -13,7 +13,6 @@ pipeline {
         }   
         
         stage('Clone repo') {
-            
             steps {
                 git branch:BRANCH, url: 'https://github.com/GarinaKristina/PET_project_javascript_Gilexpo-Draft-.git'
             }
