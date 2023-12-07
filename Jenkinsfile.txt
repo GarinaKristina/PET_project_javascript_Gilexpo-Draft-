@@ -1,4 +1,4 @@
-def BRANCH = param.Branch
+def BRANCH=param.Branch
 pipeline {
     agent any
     
@@ -19,33 +19,33 @@ pipeline {
         }
         
     
-    //     stage('Packages install') {
-    //         steps {
-    //             script {
-    //             sh 'npm ci'
-    //             }
-    //         }
-    //     }
+        stage('Packages install') {
+            steps {
+                script {
+                sh 'npm ci'
+                }
+            }
+        }
         
-    //     stage('Run tests') {
-    //         steps {    
-    //                 script {
+        stage('Run tests') {
+            steps {    
+                    script {
                     
-    //                 sh 'npm run good_test'
-    //                 }
+                    sh 'npm run good_test'
+                    }
                 
-    //         }
-    //     }
+            }
+        }
         
-    //     stage('Report') {
-    //         steps {  
-    //             script {
+        stage('Report') {
+            steps {  
+                script {
                 
-    //                 allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
-    //             }
+                    allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+                }
                 
-    //         }
-    //     }
+            }
+        }
 
     }   
 }
