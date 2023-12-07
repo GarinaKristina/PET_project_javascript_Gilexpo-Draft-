@@ -1,4 +1,4 @@
-def BRANCH = sh "git rev-parse --abbrev-ref HEAD"
+def BRANCH = 'gitAction'
 pipeline {
     agent any
     
