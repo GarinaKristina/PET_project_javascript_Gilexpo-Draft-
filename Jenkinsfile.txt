@@ -1,5 +1,13 @@
 def BRANCH = params.BRANCH_NAME
-def LABEL = params.LABEL
+def getLabel(BRANCH) {
+if(BRANCH.contains('mac') ) {
+    return 'internal-mac'
+}
+else {
+    return 'master'
+}
+}
+def LABEL = getLabel(BRANCH)
 pipeline {
     agent { 
         node { 
