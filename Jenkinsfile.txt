@@ -48,4 +48,10 @@ pipeline {
         }
 
     }   
+    post { 
+        always { 
+            mail to: 'tinka_e@mail.ru',
+      subject: "Allure report result"
+        }
+    }
 }
