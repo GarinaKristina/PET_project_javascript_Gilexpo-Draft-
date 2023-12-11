@@ -1,7 +1,11 @@
 def BRANCH = params.BRANCH_NAME
+def LABEL = params.LABEL
 pipeline {
-    agent any
-    
+    agent { 
+        node { 
+            label LABEL
+        } 
+    } 
       
     stages {
         
