@@ -50,8 +50,9 @@ pipeline {
     }   
     post { 
         always { 
-            mail to: 'tinka_e@mail.ru',
-      subject: "Allure report result"
+        emailext body: 'Tests result',
+        subject: 'Allure report from Jenkins',
+        to: 'tinka_e@mail.ru'
         }
     }
 }
