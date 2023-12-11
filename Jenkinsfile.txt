@@ -1,17 +1,10 @@
 def BRANCH = params.BRANCH_NAME
-def getLabel(BRANCH) {
-if(BRANCH.contains('mac') ) {
-    return 'internal-mac'
-}
-else {
-    return 'master'
-}
-}
-def LABEL = getLabel(BRANCH)
+// def LABEL = getLabel(BRANCH)
+
 pipeline {
     agent { 
         node { 
-            label LABEL
+            label getLabel(BRANCH)
         } 
     } 
       
@@ -69,5 +62,14 @@ pipeline {
         recipientProviders: [[$class: 'CulpritsRecipientProvider']],
         attachmentsPattern: 'allure-report/**'
         }
+    }
+}
+
+def getLabel(BRANCH) {
+    if(BRANCH.contains('mac') ) {
+        return 'internal-mac'
+    }
+    else {
+        return 'master'
     }
 }
