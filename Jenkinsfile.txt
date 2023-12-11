@@ -4,7 +4,7 @@ if(BRANCH.contains('mac') ) {
     return 'internal-mac'
 }
 else {
-    return 'мастер'
+    return 'master'
 }
 }
 def LABEL = getLabel(BRANCH)
