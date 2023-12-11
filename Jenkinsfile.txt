@@ -40,8 +40,8 @@ pipeline {
         
         stage('Report') {
             steps { 
-                archiveArtifacts 'allure-report' 
-                archiveArtifacts 'allure-result'
+                archiveArtifacts 'allure-report, allure-result' 
+                
                 script {
                 
                     allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
