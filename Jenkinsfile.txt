@@ -40,7 +40,8 @@ pipeline {
         
         stage('Report') {
             steps { 
-                archiveArtifacts 'allure-report/**' 
+                archiveArtifacts 'allure-report' 
+                archiveArtifacts 'allure-result'
                 script {
                 
                     allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
@@ -57,7 +58,8 @@ pipeline {
         to: 'tinka_e@mail.ru',
         mimeType: 'text/html',
         recipientProviders: [[$class: 'CulpritsRecipientProvider']],
-        attachmentsPattern: 'allure-report/**'
+        attachmentsPattern: 'allure-report',
+        attachmentsPattern: 'allure-result'
         }
     }
 }
