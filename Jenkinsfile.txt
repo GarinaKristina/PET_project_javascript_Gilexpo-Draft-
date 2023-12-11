@@ -38,7 +38,8 @@ pipeline {
         }
         
         stage('Report') {
-            steps {  
+            steps { 
+                archiveArtifacts 'allure-report/**' 
                 script {
                 
                     allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
@@ -52,7 +53,10 @@ pipeline {
         always { 
         emailext body: 'Tests result',
         subject: 'Allure report from Jenkins',
-        to: 'tinka_e@mail.ru'
+        to: 'tinka_e@mail.ru',
+        mimeType: 'text/html',
+        recipientProviders: [[$class: 'CulpritsRecipientProvider']],
+        attachmentsPattern: 'allure-report/**'
         }
     }
 }
