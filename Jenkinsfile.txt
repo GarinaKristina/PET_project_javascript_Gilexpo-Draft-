@@ -32,6 +32,7 @@ pipeline {
                     script {
                     
                     sh 'npm run good_test'
+                    sh 'ls'
                     }
                 
             }
