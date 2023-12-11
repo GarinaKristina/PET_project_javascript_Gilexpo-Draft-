@@ -51,6 +51,7 @@ pipeline {
     post { 
         always { 
         emailext body: 'Tests result',
+        from: 'tinka_e@mail.ru',
         subject: 'Allure report from Jenkins',
         to: 'garinakristinka@gmail.com'
         }
