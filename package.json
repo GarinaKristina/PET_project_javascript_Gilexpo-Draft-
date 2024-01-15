@@ -8,7 +8,7 @@
     "@wdio/mocha-framework": "^8.22.0",
     "@wdio/spec-reporter": "^8.21.0",
     "allure-commandline": "^2.24.1",
-    "chromedriver": "^119.0.1",
+    "chromedriver": "^120.0.1",
     "wdio-chromedriver-service": "^8.1.1"
   },
   "scripts": {
