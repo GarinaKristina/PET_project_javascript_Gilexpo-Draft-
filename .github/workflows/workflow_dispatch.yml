@@ -1,0 +1,23 @@
+name: Workflow_dispatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      owner:
+        description: "Type your name"
+        required: true
+        default: "Kristofer"
+        type: choice
+        options:
+          - Artem
+          - Edgar
+          - Ivan
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Owner
+        run: echo "Report created by ${{ github.event.inputs.owner }}"
