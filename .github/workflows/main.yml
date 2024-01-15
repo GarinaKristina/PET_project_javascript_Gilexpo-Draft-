@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos
     name: Automation tests for Gilexpo
 
     steps:
@@ -21,7 +21,7 @@ jobs:
 
   allure:
     name: Generate Allure Report
-    runs-on: macos-13
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Pet project
