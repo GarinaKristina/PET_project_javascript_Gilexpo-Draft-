@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos
+    runs-on: macos-13
     name: Automation tests for Gilexpo
 
     steps:
