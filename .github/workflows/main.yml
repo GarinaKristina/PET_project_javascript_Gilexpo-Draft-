@@ -1,8 +1,26 @@
 name: Automation tests for Gilexpo
 
 on:
+  push:
+    branches: ["main"]
+
   pull_request:
     branches: ["main"]
+
+  workflow_dispatch:
+    inputs:
+      owner:
+        description: "Type your name"
+        required: true
+        default: "Kristofer"
+        type: choice
+        options:
+          - Artem
+          - Edgar
+          - Ivan
+
+  schedule:
+    - cron: "0 */6 * * *"
 
 jobs:
   build:
@@ -27,6 +45,9 @@ jobs:
     steps:
       - name: Checkout Pet project
         uses: actions/checkout@v4
+
+      - name: Owner
+        run: echo "Report created by ${{ github.event.inputs.owner }}"
 
       - name: Get Allure history
         uses: actions/checkout@v4
