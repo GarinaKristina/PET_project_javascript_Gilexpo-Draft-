@@ -19,8 +19,13 @@ jobs:
       - name: Run succeed test
         run: npm run good_test
 
-      - name: Run failed test
-        run: npm run bad_test
+  allure:
+    name: Generate Allure Report
+    runs-on: macos-13
+
+    steps:
+      - name: Checkout Pet project
+        uses: actions/checkout@v4
 
       - name: Get Allure history
         uses: actions/checkout@v2
@@ -33,6 +38,7 @@ jobs:
       - name: Allure Report action from marketplace
         uses: simple-elf/allure-report-action@master
         if: always()
+        #id: allure-report
         with:
           allure_results: allure-results
           #gh_pages: gh-pages
