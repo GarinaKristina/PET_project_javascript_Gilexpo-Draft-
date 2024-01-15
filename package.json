@@ -8,10 +8,11 @@
     "@wdio/mocha-framework": "^8.22.0",
     "@wdio/spec-reporter": "^8.21.0",
     "allure-commandline": "^2.24.1",
-    "chromedriver": "^120.0.1",
+    "chromedriver": "^120.0.0",
     "wdio-chromedriver-service": "^8.1.1"
   },
   "scripts": {
+    "pregood_test": "rimraf allure-results && npx eslint ./src/**/*.js --fix",
     "good_test": "wdio run ./wdio.conf.js --suite good",
     "bad_test": "wdio run ./wdio.conf.js --suite bad",
     "create_report": "allure generate allure-result/ --clean && allure open"
