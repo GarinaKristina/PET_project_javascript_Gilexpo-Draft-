@@ -25,7 +25,10 @@ on:
 jobs:
   build:
     runs-on: macos-13
-    name: Automation tests for Gilexpo
+
+    strategy:
+      matrix:
+        browser: [chrome, firefox]
 
     steps:
       - name: Checkout Pet project
