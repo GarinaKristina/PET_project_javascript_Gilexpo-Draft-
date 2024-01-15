@@ -46,8 +46,8 @@ jobs:
     needs: build
 
     steps:
-      - name: Checkout Pet project
-        uses: actions/checkout@v4
+      # - name: Checkout Pet project
+      #   uses: actions/checkout@v4
 
       - name: Owner
         run: echo "Report created by ${{ github.event.inputs.owner }}"
