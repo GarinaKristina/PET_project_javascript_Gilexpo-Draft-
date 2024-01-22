@@ -1,8 +1,8 @@
 name: Automation tests for Gilexpo
 
 on:
-  # push:
-  #   branches: ["main"]
+  push:
+    branches: ["main"]
 
   # pull_request:
   #   branches: ["main"]
@@ -27,6 +27,12 @@ jobs:
 
       - name: Run succeed test
         run: npm run good_test
+
+      - name: Git command
+        run: |
+          git add .
+          git commit -m 'Add report'
+          git push
 
   allure:
     name: Generate Allure Report
