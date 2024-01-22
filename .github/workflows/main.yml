@@ -22,11 +22,11 @@ jobs:
       - name: Checkout Pet project
         uses: actions/checkout@v4
 
-      - name: Set up environment variables
-        run: |
-          echo "ALLURE_RESULTS=${{ github.workspace }}/path/to/allure-results" >> $GITHUB_ENV
-          echo "ALLURE_REPORT=${{ github.workspace }}/path/to/allure-report" >> $GITHUB_ENV
-          echo "ALLURE_COMMANDLINE=$(npm bin)/allure" >> $GITHUB_ENV
+      # - name: Set up environment variables
+      #   run: |
+      #     echo "ALLURE_RESULTS=${{ github.workspace }}/path/to/allure-results" >> $GITHUB_ENV
+      #     echo "ALLURE_REPORT=${{ github.workspace }}/path/to/allure-report" >> $GITHUB_ENV
+      #     echo "ALLURE_COMMANDLINE=$(npm bin)/allure" >> $GITHUB_ENV
 
       - name: Install packages
         run: |
