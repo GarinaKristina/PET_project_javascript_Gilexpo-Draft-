@@ -33,7 +33,7 @@ jobs:
           ls
           git add .
           git commit -m 'Add report'
-          git push
+          git push origin HEAD:gitAction
 
   # allure:
   #   name: Generate Allure Report
