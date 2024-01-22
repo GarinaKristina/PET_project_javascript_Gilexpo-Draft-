@@ -34,6 +34,12 @@ jobs:
           name: allure-results
           path: allure-results
 
+      - name: Archive Allure report
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-report
+          path: allure-report
+
   allure:
     name: Generate Allure Report
     runs-on: ubuntu-latest
@@ -44,6 +50,11 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: allure-results
+
+      - name: Download Allure report
+        uses: actions/download-artifact@v2
+        with:
+          name: allure-report
 
       - name: Get Allure history
         uses: actions/checkout@v4
