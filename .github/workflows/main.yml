@@ -50,11 +50,13 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: allure-results
+          run: ls
 
       - name: Download Allure report
         uses: actions/download-artifact@v2
         with:
           name: allure-report
+          run: ls
 
       - name: Get Allure history
         uses: actions/checkout@v4
