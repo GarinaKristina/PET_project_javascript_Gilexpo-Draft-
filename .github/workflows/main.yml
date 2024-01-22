@@ -50,13 +50,11 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: allure-results
-          run: ls
 
       - name: Download Allure report
         uses: actions/download-artifact@v2
         with:
           name: allure-report
-          run: ls
 
       - name: Get Allure history
         uses: actions/checkout@v4
@@ -74,8 +72,9 @@ jobs:
           allure_results: allure-results
           gh_pages: gh-pages
           allure_report: allure-report
+          allure_result: allure-result
           allure_history: allure-history
-          keep_reports: 20
+          keep_reports: 5
 
       - name: Deploy report to Github Pages
         if: always()
@@ -83,4 +82,4 @@ jobs:
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+          PUBLISH_DIR: ./
