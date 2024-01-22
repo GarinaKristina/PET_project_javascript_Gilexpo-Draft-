@@ -30,6 +30,7 @@ jobs:
         run: |
           npm run good_test
           ls
+          cd allure-report
 
       - name: Archive Allure results
         uses: actions/upload-artifact@v2
@@ -84,4 +85,4 @@ jobs:
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./
+          PUBLISH_DIR: ./allure-report
