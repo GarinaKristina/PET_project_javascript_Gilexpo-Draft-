@@ -13,7 +13,7 @@
   },
   "scripts": {
     "good_test": "wdio run ./wdio.conf.js --suite good",
-    "bad_test": "wdio run ./wdio.conf.js --suite bad",
-    "create_report": "allure generate allure-result/ --clean && allure open"
+    "bad_test": "wdio run wdio.conf.js --suite bad",
+    "create_report": "allure generate allure-results/ --clean && allure open"
   }
 }
