@@ -1,2 +1,2 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Mon Jan 22 13:32:34 UTC 2024","Mon Jan 22 13:32:38 UTC 2024","4980","","Sent letter to support from guestbook","","","","Should type data and save screenshot ",""
+"passed","Mon Jan 22 13:36:43 UTC 2024","Mon Jan 22 13:36:52 UTC 2024","8759","","Sent letter to support from guestbook","","","","Should type data and save screenshot ",""
