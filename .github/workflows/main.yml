@@ -22,15 +22,19 @@ jobs:
       - name: Checkout Pet project
         uses: actions/checkout@v4
 
+      - name: Set up environment variables
+        run: |
+          echo "ALLURE_RESULTS=${{ github.workspace }}/path/to/allure-results" >> $GITHUB_ENV
+          echo "ALLURE_REPORT=${{ github.workspace }}/path/to/allure-report" >> $GITHUB_ENV
+          echo "ALLURE_COMMANDLINE=$(npm bin)/allure" >> $GITHUB_ENV
+
       - name: Install packages
         run: |
           npm install
-          npm install -g allure-commandline --save-dev
 
       - name: Run succeed test
         run: |
           npm run good_test
-          ls
 
       - name: Archive Allure results
         uses: actions/upload-artifact@v2
