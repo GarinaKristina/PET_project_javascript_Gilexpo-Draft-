@@ -28,7 +28,9 @@ jobs:
           npm install -g allure-commandline
 
       - name: Run succeed test
-        run: npm run good_test
+        run: |
+          npm run good_test
+          ls
 
       - name: Archive Allure results
         uses: actions/upload-artifact@v2
