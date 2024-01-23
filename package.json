@@ -9,6 +9,8 @@
     "@wdio/spec-reporter": "^8.28.8",
     "allure-commandline": "^2.26.0",
     "chromedriver": "^120.0.0",
+    "dotenv": "^16.3.2",
+    "nodemailer": "^6.9.8",
     "wdio-chromedriver-service": "^8.1.1"
   },
   "scripts": {

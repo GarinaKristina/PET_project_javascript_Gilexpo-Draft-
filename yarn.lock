@@ -1041,10 +1041,10 @@
   "resolved" "https://registry.npmjs.org/diff/-/diff-5.0.0.tgz"
   "version" "5.0.0"
 
-"dotenv@^16.3.1":
-  "integrity" "sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ=="
-  "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-16.3.1.tgz"
-  "version" "16.3.1"
+"dotenv@^16.3.1", "dotenv@^16.3.2":
+  "integrity" "sha512-HTlk5nmhkm8F6JcdXvHIzaorzCoziNQT9mGxLPVXW8wJF1TiGSL60ZGB4gHWabHOaMmWmhvk2/lPHfnBiT78AQ=="
+  "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-16.3.2.tgz"
+  "version" "16.3.2"
 
 "duplexer2@~0.1.4":
   "integrity" "sha512-asLFVfWWtJ90ZyOUHMqk7/S2w2guQKxUI2itj3d92ADHhxUSbCMGi1f1cBcJ7xM1To+pE/Khbwo1yuNbMEPKeA=="
@@ -2270,6 +2270,11 @@
     "data-uri-to-buffer" "^4.0.0"
     "fetch-blob" "^3.1.4"
     "formdata-polyfill" "^4.0.10"
+
+"nodemailer@^6.9.8":
+  "integrity" "sha512-cfrYUk16e67Ks051i4CntM9kshRYei1/o/Gi8K1d+R34OIs21xdFnW7Pt7EucmVKA0LKtqUGNcjMZ7ehjl49mQ=="
+  "resolved" "https://registry.npmjs.org/nodemailer/-/nodemailer-6.9.8.tgz"
+  "version" "6.9.8"
 
 "normalize-package-data@^6.0.0":
   "integrity" "sha512-UL7ELRVxYBHBgYEtZCXjxuD5vPxnmvMGq0jp/dGPKKrN7tfsBh2IY7TlJ15WWwdjRWD3RJbnsygUurTK3xkPkg=="

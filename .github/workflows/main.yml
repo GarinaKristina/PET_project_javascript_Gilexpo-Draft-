@@ -30,10 +30,12 @@ jobs:
         run: |
           npm run good_test
 
-      - name: Check allure report
+      - name: Check allure report folder
         run: |
           ls
+          echo "------------------"
           cd allure-report
+          cd data
           ls
 
       - name: Archive Allure results
