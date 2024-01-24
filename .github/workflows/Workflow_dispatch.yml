@@ -1,4 +1,4 @@
-name: Workflow_dispatch
+name: Mannually testing and sending report
 
 on:
   workflow_dispatch:
@@ -52,3 +52,17 @@ jobs:
         with:
           name: allure-report
           path: allure-report
+
+      - name: Download Allure artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: allure-results
+
+      - name: Send email with Allure artifacts
+        run: |
+          cd $GITHUB_WORKSPACE
+          node ./sentReport.js
+
+        env:
+          USER_EMAIL: ${{ secrets.USER_EMAIL }}
+          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
