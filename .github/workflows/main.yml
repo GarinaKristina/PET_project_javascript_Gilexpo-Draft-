@@ -9,6 +9,9 @@ on:
 
   # schedule:
   #   - cron: "0 */6 * * *"
+env:
+  USER_EMAIL: ${{ secrets.USER_EMAIL }}
+  USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
 
 jobs:
   build:
@@ -24,7 +27,7 @@ jobs:
 
       - name: Install packages
         run: |
-          npm install
+          npm ci
 
       - name: Run succeed test
         run: |
