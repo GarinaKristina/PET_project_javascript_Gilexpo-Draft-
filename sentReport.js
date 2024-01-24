@@ -18,7 +18,7 @@ async function main() {
     subject: "Report ✔", // Subject line
     text: "Allure report", // plain text body
     html: `<p>Attached are the Allure artifacts.</p>`,
-    attachments: [{ path: "./allure-report" }, { path: "./allure-results" }],
+    attachments: [{ path: "allure-report/**" }, { path: "./allure-results/**" }],
   });
 
   console.log("Message sent: ", info.messageId);
