@@ -31,8 +31,8 @@ async function main() {
     text: "Allure report",
     html: `<p>Attached are the Allure artifacts.</p>`,
     attachments: [
-      { filename: "allure-results.zip", content: allureResults, encoding: "base64" },
-      { filename: "allure-report.zip", content: allureReport, encoding: "base64" },
+      { filename: "allure-results", content: allureResults, encoding: "base64" },
+      { filename: "allure-report", content: allureReport, encoding: "base64" },
     ],
   });
 
