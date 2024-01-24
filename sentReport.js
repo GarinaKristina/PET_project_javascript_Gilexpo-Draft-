@@ -14,22 +14,26 @@ const transporter = nodemailer.createTransport({
 });
 
 async function main() {
-  const allureResults = await fs.promises.readFile("allure-results/*.json", "utf-8");
-  const allureReport = await fs.promises.readFile("allure-report/index.html", "utf-8");
+  const allureResultsArchive = archiver("zip");
+  allureResultsArchive.directory("allure-results", false);
+  allureResultsArchive.finalize();
+  const allureResults = await fs.promises.readFile("allure-results.zip");
 
-  // Создание ZIP-архива
-  const zip = archiver("zip");
-  zip.append(allureResults, { name: "allure-results.json" });
-  zip.append(allureReport, { name: "allure-report.html" });
-  zip.finalize();
+  const allureReportArchive = archiver("zip");
+  allureReportArchive.directory("allure-report", false);
+  allureReportArchive.finalize();
+  const allureReport = await fs.promises.readFile("allure-report.zip");
 
   const info = await transporter.sendMail({
     from: `"Fred Foo 👻" <${ENV_READER.USER_EMAIL}>`,
     to: `${ENV_READER.USER_EMAIL}`,
-    subject: "Report ✔", // Subject line
-    text: "Allure report", // plain text body
+    subject: "Report ✔",
+    text: "Allure report",
     html: `<p>Attached are the Allure artifacts.</p>`,
-    attachments: [{ filename: "allure-artifacts.zip", content: zip, encoding: "base64" }],
+    attachments: [
+      { filename: "allure-results.zip", content: allureResults, encoding: "base64" },
+      { filename: "allure-report.zip", content: allureReport, encoding: "base64" },
+    ],
   });
 
   console.log("Message sent: ", info.messageId);
