@@ -17,7 +17,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - name: Checkout Pet project
+        uses: actions/checkout@v4
+
+      - name: Install packages
+        run: |
+          npm ci
+
+      - name: Run succeed test
+        run: |
+          npm run good_test
+          
       - name: Owner
-        run: echo "Report created by ${{ github.event.inputs.owner }}"
+        run: echo "Report runned by ${{ github.event.inputs.owner }}"
