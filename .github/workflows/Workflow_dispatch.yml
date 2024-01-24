@@ -6,7 +6,7 @@ on:
       owner:
         description: "Type your name"
         required: true
-        default: "Kristofer"
+        default: "Kris"
         type: choice
         options:
           - Artem
@@ -28,14 +28,6 @@ jobs:
       - name: Run succeed test
         run: |
           npm run good_test
-
-      # - name: Check allure report folder
-      #   run: |
-      #     ls
-      #     echo "------------------"
-      #     cd allure-report
-      #     cd data
-      #     ls
 
       - name: Archive Allure results
         uses: actions/upload-artifact@v2
@@ -67,9 +59,9 @@ jobs:
           host: "smtp.mail.ru"
           account: ${{secrets.USER_EMAIL}}
           password: ${{secrets.USER_PASSWORD}}
-          sender: "KG"
+          sender: "Kristina Orbacaite"
           from: ${{secrets.USER_EMAIL}}
-          subject: Github Actions job result
-          body: "report"
+          subject: Attached are the Allure artifacts
+          body: "Report after running test by ${{ github.event.inputs.owner }}✔"
           attachments: '[{"path":"allure-results.zip"},{"path":"allure-report.zip"}]'
           to: ${{secrets.USER_EMAIL}}
