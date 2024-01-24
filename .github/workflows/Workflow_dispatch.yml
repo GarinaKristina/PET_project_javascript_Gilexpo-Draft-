@@ -13,10 +13,6 @@ on:
           - Edgar
           - Kris
 
-# env:
-#   USER_EMAIL: ${{ secrets.USER_EMAIL }}
-#   USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
-
 jobs:
   build:
     runs-on: macos-13
@@ -58,11 +54,22 @@ jobs:
         with:
           name: allure-results
 
-      - name: Send email with Allure artifacts
+      - name: Create Archives
         run: |
-          ls
-          node ./sentReport.js
+          zip -r allure-results.zip allure-results
+          zip -r allure-report.zip allure-report
+          echo `${{ github.workspace }}`
+          echo `$GITHUB_WORKSPACE`
 
-        env:
-          USER_EMAIL: ${{ secrets.USER_EMAIL }}
-          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+      - name: Send email
+        uses: devellany/send-mail@v1.0.2
+        with:
+          host: "smtp.mail.ru"
+          account: ${{secrets.USER_EMAIL}}
+          password: ${{secrets.USER_PASSWORD}}
+          sender: "KG"
+          from: ${{secrets.USER_EMAIL}}
+          subject: Github Actions job result
+          body: "report"
+          attachments: '[{"path":"allure-results.zip"},{"path":"allure-report.zip"}]'
+          to: ${{secrets.USER_EMAIL}}
