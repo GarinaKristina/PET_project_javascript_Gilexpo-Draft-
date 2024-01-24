@@ -13,9 +13,14 @@ on:
           - Edgar
           - Kris
 
+env:
+  USER_EMAIL: ${{ secrets.USER_EMAIL }}
+  USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-13
+
     steps:
       - name: Checkout Pet project
         uses: actions/checkout@v4
@@ -27,6 +32,23 @@ jobs:
       - name: Run succeed test
         run: |
           npm run good_test
-          
-      - name: Owner
-        run: echo "Report runned by ${{ github.event.inputs.owner }}"
+
+      - name: Check allure report folder
+        run: |
+          ls
+          echo "------------------"
+          cd allure-report
+          cd data
+          ls
+
+      - name: Archive Allure results
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-results
+          path: allure-results
+
+      - name: Archive Allure report
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-report
+          path: allure-report
