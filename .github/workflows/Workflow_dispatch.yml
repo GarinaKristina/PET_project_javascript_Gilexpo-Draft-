@@ -1,0 +1,32 @@
+name: Workflow_dispatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      owner:
+        description: "Type your name"
+        required: true
+        default: "Kristofer"
+        type: choice
+        options:
+          - Artem
+          - Edgar
+          - Kris
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Pet project
+        uses: actions/checkout@v4
+
+      - name: Install packages
+        run: |
+          npm ci
+
+      - name: Run succeed test
+        run: |
+          npm run good_test
+          
+      - name: Owner
+        run: echo "Report runned by ${{ github.event.inputs.owner }}"
