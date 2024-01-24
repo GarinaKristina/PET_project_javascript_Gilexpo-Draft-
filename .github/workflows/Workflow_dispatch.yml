@@ -13,9 +13,9 @@ on:
           - Edgar
           - Kris
 
-env:
-  USER_EMAIL: ${{ secrets.USER_EMAIL }}
-  USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+# env:
+#   USER_EMAIL: ${{ secrets.USER_EMAIL }}
+#   USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
 
 jobs:
   build:
@@ -33,13 +33,13 @@ jobs:
         run: |
           npm run good_test
 
-      - name: Check allure report folder
-        run: |
-          ls
-          echo "------------------"
-          cd allure-report
-          cd data
-          ls
+      # - name: Check allure report folder
+      #   run: |
+      #     ls
+      #     echo "------------------"
+      #     cd allure-report
+      #     cd data
+      #     ls
 
       - name: Archive Allure results
         uses: actions/upload-artifact@v2
@@ -60,7 +60,7 @@ jobs:
 
       - name: Send email with Allure artifacts
         run: |
-          cd $GITHUB_WORKSPACE
+          ls
           node ./sentReport.js
 
         env:
