@@ -11,7 +11,7 @@ on:
         options:
           - Artem
           - Edgar
-          - Ivan
+          - Kris
 
 jobs:
   build:
