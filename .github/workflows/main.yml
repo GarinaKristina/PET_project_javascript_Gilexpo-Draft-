@@ -30,50 +30,40 @@ jobs:
         run: |
           npm run good_test
 
-      - name: Check allure report folder
-        run: |
-          ls
-          echo "------------------"
-          cd allure-report
-          cd data
-          ls
+      # - name: Archive Allure results
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: allure-results
+      #     path: allure-results
 
-      - name: Archive Allure results
-        uses: actions/upload-artifact@v2
-        with:
-          name: allure-results
-          path: allure-results
+      # - name: Archive Allure report
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: allure-report
+      #     path: allure-report
 
-      - name: Archive Allure report
-        uses: actions/upload-artifact@v2
-        with:
-          name: allure-report
-          path: allure-report
+      # - name: Download Allure artifacts
+      #   uses: actions/download-artifact@v2
+      #   with:
+      #     name: allure-results
 
-      - name: Download Allure artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: allure-results
+      # - name: Create Archives
+      #   run: |
+      #     zip -r allure-results.zip allure-results
+      #     zip -r allure-report.zip allure-report
 
-      - name: Create Archives
-        run: |
-          zip -r allure-results.zip allure-results
-          zip -r allure-report.zip allure-report
-          echo `${{ github.workspace }}`
-          echo `$GITHUB_WORKSPACE`
-
-      - name: Send email
-        uses: devellany/send-mail@v1.0.2
-        with:
-          host: "smtp.mail.ru"
-          account: ${{secrets.USER_EMAIL}}
-          password: ${{secrets.USER_PASSWORD}}
-          sender: "Kristina Orbacaite"
-          from: ${{secrets.USER_EMAIL}}
-          subject: Attached are the Allure artifacts
-          body: "Report after running test by ${{ github.event.inputs.owner }}✔"
-          attachments: '[{"path":"allure-results.zip"},{"path":"allure-report.zip"}]'
-          to: ${{secrets.USER_EMAIL}}
+      # - name: Send email
+      #   uses: devellany/send-mail@v1.0.2
+      #   with:
+      #     host: "smtp.mail.ru"
+      #     account: ${{secrets.USER_EMAIL}}
+      #     password: ${{secrets.USER_PASSWORD}}
+      #     sender: "Kristina Orbacaite"
+      #     from: ${{secrets.USER_EMAIL}}
+      #     subject: Attached are the Allure artifacts
+      #     body: "Report after running test by ${{ github.event.inputs.owner }}✔"
+      #     attachments: '[{"path":"allure-results.zip"},{"path":"allure-report.zip"}]'
+      #     to: ${{secrets.USER_EMAIL}}
 
   allure:
     name: Generate Allure Report
@@ -84,12 +74,12 @@ jobs:
       - name: Download Allure results
         uses: actions/download-artifact@v2
         with:
-          name: allure-results.zip
+          name: allure-results
 
       - name: Download Allure report
         uses: actions/download-artifact@v2
         with:
-          name: allure-report.zip
+          name: allure-report
 
       - name: Get Allure history
         uses: actions/checkout@v4
@@ -123,12 +113,11 @@ jobs:
         if: always()
         id: allure-report
         with:
-          allure_results: allure-results
           gh_pages: gh-pages
-          allure_report: allure-report
-          allure_result: allure-result
+          allure_results: ./allure-results
+          allure_report: ./allure-report
           allure_history: allure-history
-          keep_reports: 20
+          keep_reports: 5
 
       - name: Deploy report to Github Pages
         if: always()
@@ -136,7 +125,7 @@ jobs:
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+          PUBLISH_DIR: ./
 
       - name: Post the link to the report
         if: always()
