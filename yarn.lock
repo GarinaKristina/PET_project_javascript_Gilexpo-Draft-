@@ -492,7 +492,7 @@
     "normalize-path" "^3.0.0"
     "readable-stream" "^3.6.0"
 
-"archiver@^6.0.0", "archiver@^6.0.1":
+"archiver@^6.0.0":
   "integrity" "sha512-CXGy4poOLBKptiZH//VlWdFuUC1RESbdZjGjILwBuZ73P7WkAUN0htfSfBq/7k6FRFlpu7bg4JOkj1vU9G6jcQ=="
   "resolved" "https://registry.npmjs.org/archiver/-/archiver-6.0.1.tgz"
   "version" "6.0.1"
@@ -2270,11 +2270,6 @@
     "data-uri-to-buffer" "^4.0.0"
     "fetch-blob" "^3.1.4"
     "formdata-polyfill" "^4.0.10"
-
-"nodemailer@^6.9.8":
-  "integrity" "sha512-cfrYUk16e67Ks051i4CntM9kshRYei1/o/Gi8K1d+R34OIs21xdFnW7Pt7EucmVKA0LKtqUGNcjMZ7ehjl49mQ=="
-  "resolved" "https://registry.npmjs.org/nodemailer/-/nodemailer-6.9.8.tgz"
-  "version" "6.9.8"
 
 "normalize-package-data@^6.0.0":
   "integrity" "sha512-UL7ELRVxYBHBgYEtZCXjxuD5vPxnmvMGq0jp/dGPKKrN7tfsBh2IY7TlJ15WWwdjRWD3RJbnsygUurTK3xkPkg=="
