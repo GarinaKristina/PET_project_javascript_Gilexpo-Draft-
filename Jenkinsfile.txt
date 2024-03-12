@@ -1,0 +1,75 @@
+def BRANCH = params.BRANCH_NAME
+// def LABEL = getLabel(BRANCH)
+
+pipeline {
+    agent { 
+        node { 
+            label getLabel(BRANCH)
+        } 
+    } 
+      
+    stages {
+        
+        stage('Clean') {
+            steps {
+                cleanWs()
+                echo "I am cleaning your amazing branch...oh oh oh....."
+            }
+        }   
+        
+        stage('Clone repo') {
+            steps {
+                git branch:BRANCH, url: 'https://github.com/GarinaKristina/PET_project_javascript_Gilexpo-Draft-.git'
+            }
+        }
+        
+    
+        stage('Packages install') {
+            steps {
+                script {
+                sh 'npm ci'
+                }
+            }
+        }
+        
+        stage('Run tests') {
+            steps {    
+                    script {
+                    sh 'npm run good_test'
+                    }
+                
+            }
+        }
+        
+        stage('Report') {
+            steps { 
+                archiveArtifacts 'allure-report/**'
+                script {
+                
+                    allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+                }
+                
+            }
+        }
+
+    }   
+    post { 
+        always { 
+        emailext body: 'Tests result',
+        subject: 'Allure report from Jenkins',
+        to: 'tinka_e@mail.ru',
+        mimeType: 'text/html',
+        recipientProviders: [[$class: 'CulpritsRecipientProvider']],
+        attachmentsPattern: 'allure-report/**'
+        }
+    }
+}
+
+def getLabel(BRANCH) {
+    if(BRANCH.contains('mac') ) {
+        return 'internal-mac'
+    }
+    else {
+        return 'master'
+    }
+}

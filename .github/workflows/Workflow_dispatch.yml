@@ -1,4 +1,4 @@
-name: Workflow_dispatch
+name: Mannually testing and sending report
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
       owner:
         description: "Type your name"
         required: true
-        default: "Kristofer"
+        default: "Kris"
         type: choice
         options:
           - Artem
@@ -15,7 +15,8 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-13
+
     steps:
       - name: Checkout Pet project
         uses: actions/checkout@v4
@@ -27,6 +28,38 @@ jobs:
       - name: Run succeed test
         run: |
           npm run good_test
-          
-      - name: Owner
-        run: echo "Report runned by ${{ github.event.inputs.owner }}"
+
+      - name: Archive Allure results
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-results
+          path: allure-results
+
+      - name: Archive Allure report
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-report
+          path: allure-report
+
+      - name: Download Allure artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: allure-results
+
+      - name: Create Archives
+        run: |
+          zip -r allure-results.zip allure-results
+          zip -r allure-report.zip allure-report
+
+      - name: Send email
+        uses: devellany/send-mail@v1.0.2
+        with:
+          host: "smtp.mail.ru"
+          account: ${{secrets.USER_EMAIL}}
+          password: ${{secrets.USER_PASSWORD}}
+          sender: "Kristina Orbacaite"
+          from: ${{secrets.USER_EMAIL}}
+          subject: Attached are the Allure artifacts
+          body: "Report after running test by ${{ github.event.inputs.owner }}✔"
+          attachments: '[{"path":"allure-results.zip"},{"path":"allure-report.zip"}]'
+          to: ${{secrets.USER_EMAIL}}

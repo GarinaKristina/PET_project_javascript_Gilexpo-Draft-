@@ -4,4 +4,5 @@ export default class HomePage {
   nameAndAddress = '//input[@id="pgbusername"]';
   email = '//input[@id="pgbemail"]';
   content = '//*[@id="tinymce"]';
+  guestbookDescription = 'div[class="guestbook-description"] p strong';
 }

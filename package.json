@@ -2,15 +2,19 @@
   "name": "my-new-project",
   "type": "module",
   "devDependencies": {
-    "@wdio/cli": "^8.22.1",
-    "@wdio/local-runner": "^8.22.1",
-    "@wdio/mocha-framework": "^8.22.0",
-    "@wdio/spec-reporter": "^8.21.0",
-    "chromedriver": "^119.0.0",
-    "wdio-chromedriver-service": "^8.1.1",
-    "wdio-gmail-service": "^1.0.4"
+    "@wdio/allure-reporter": "^8.28.6",
+    "@wdio/cli": "^8.28.8",
+    "@wdio/local-runner": "^8.28.8",
+    "@wdio/mocha-framework": "^8.28.8",
+    "@wdio/spec-reporter": "^8.28.8",
+    "allure-commandline": "^2.26.0",
+    "chromedriver": "^120.0.0",
+    "dotenv": "^16.3.2",
+    "wdio-chromedriver-service": "^8.1.1"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.js"
+    "good_test": "wdio run ./wdio.conf.js --suite good",
+    "bad_test": "wdio run ./wdio.conf.js --suite bad",
+    "create_report": "allure generate allure-results/ --clean && allure open"
   }
 }
